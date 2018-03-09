@@ -1,0 +1,11 @@
+﻿@model Application.Models.HomeIndexModel
+@{
+    ViewBag.Title = "Home Page";
+}
+
+@foreach (var user in Model.Users)
+{
+    <div>
+        <p><strong>@user.Name</strong></p>
+    </div>
+}
