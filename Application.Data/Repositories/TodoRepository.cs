@@ -1,11 +1,12 @@
-﻿using Application.Entities;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
-using Application.Context;
+using Application.Data.Entities;
+using Application.Core.Repositories;
+using Application.Core.Contexts;
 
-namespace Application.Repositories
+namespace Application.Data.Repositories
 {
     public interface ITodoRepository : IRepository<Todo>
     {

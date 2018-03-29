@@ -2,16 +2,16 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
-using Application.Entities;
-using Application.Context;
+using Application.Core.Entities;
+using Application.Core.Contexts;
 
-namespace Application.Repositories
+namespace Application.Core.Repositories
 {
-    public class BaseRepository<T> : ARepository<T> where T : IEntity, new()
+    public abstract class BaseRepository<T> : ARepository<T> where T : IEntity, new()
     {
         protected readonly IContext Context;
 
-        public BaseRepository(IContext Context)
+        protected BaseRepository(IContext Context)
         {
             this.Context = Context;
         }

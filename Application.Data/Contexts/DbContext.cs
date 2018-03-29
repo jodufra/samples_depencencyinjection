@@ -1,19 +1,19 @@
-﻿using Application.Entities;
+﻿using Application.Core.Contexts;
+using Application.Data.Entities;
 using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 
-namespace Application.Context
+namespace Application.Data.Contexts
 {
-    public class AppContext : BaseContext
+    public class DbContext : BaseContext
     {
-
         public IList<User> Users = new List<User>();
         public IList<Todo> Todos = new List<Todo>();
 
-        public AppContext()
+        public DbContext()
         {
             Register(typeof(User), Users.AsQueryable());
             Register(typeof(Todo), Todos.AsQueryable());

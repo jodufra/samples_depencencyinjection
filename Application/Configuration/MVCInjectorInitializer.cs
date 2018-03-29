@@ -8,8 +8,9 @@ namespace Application.Configuration
     using SimpleInjector;
     using SimpleInjector.Integration.Web.Mvc;
     using SimpleInjector.Integration.Web;
-    using Application.Context;
-    using Application.Repositories;
+    using Application.Core.Contexts;
+    using Application.Data.Factories;
+    using Application.Data.Repositories;
 
     public static class MVCInjectorInitializer
     {
@@ -33,7 +34,7 @@ namespace Application.Configuration
 
         static void RegisterDependencies(Container container)
         {
-            container.Register<IContext>(() => new Context.AppContext(), Lifestyle.Scoped);
+            container.Register<IContext>(() => DbContextFactory.Instance.GetPerRequest(), Lifestyle.Scoped);
 
             container.Register<IUserRepository, UserRepository>();
             container.Register<ITodoRepository, TodoRepository>();

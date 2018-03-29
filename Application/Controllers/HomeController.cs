@@ -1,5 +1,5 @@
-﻿using Application.Models;
-using Application.Repositories;
+﻿using Application.Data.Repositories;
+using Application.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;

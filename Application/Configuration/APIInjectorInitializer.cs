@@ -5,8 +5,9 @@ namespace Application.Configuration
     using SimpleInjector.Integration.WebApi;
     using SimpleInjector;
     using System.Web.Http;
-    using Application.Context;
-    using Application.Repositories;
+    using Application.Core.Contexts;
+    using Application.Data.Factories;
+    using Application.Data.Repositories;
 
     public static class APIInjectorInitializer
     {
@@ -29,7 +30,7 @@ namespace Application.Configuration
 
         static void RegisterDependencies(Container container)
         {
-            container.Register<IContext>(() => new Context.AppContext(), Lifestyle.Scoped);
+            container.Register<IContext>(() => DbContextFactory.Instance.GetPerRequest(), Lifestyle.Scoped);
 
             container.Register<IUserRepository, UserRepository>();
             container.Register<ITodoRepository, TodoRepository>();

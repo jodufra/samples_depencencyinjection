@@ -128,23 +128,12 @@
     <Compile Include="Configuration\MVCInjectorInitializer.cs" />
     <Compile Include="Configuration\RouteConfig.cs" />
     <Compile Include="Configuration\WebApiConfig.cs" />
-    <Compile Include="Context\Abstract\BaseContext.cs" />
-    <Compile Include="Context\Abstract\IContext.cs" />
-    <Compile Include="Context\AppContext.cs" />
     <Compile Include="Controllers\HomeController.cs" />
-    <Compile Include="Entities\Abstract\BaseEntity.cs" />
-    <Compile Include="Entities\Abstract\IEntity.cs" />
-    <Compile Include="Entities\Todo.cs" />
-    <Compile Include="Entities\User.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Models\HomeIndexModel.cs" />
-    <Compile Include="Repositories\Abstract\BaseRepository.cs" />
-    <Compile Include="Repositories\Abstract\IRepository.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Repositories\TodoRepository.cs" />
-    <Compile Include="Repositories\UserRepository.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="favicon.ico" />
@@ -168,6 +157,16 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Application.Core\Application.Core.csproj">
+      <Project>{2da7b075-1173-449a-89c0-ee3f90ce6e42}</Project>
+      <Name>Application.Core</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Application.Data\Application.Data.csproj">
+      <Project>{6e4eb754-a342-4537-bdcf-878469fce268}</Project>
+      <Name>Application.Data</Name>
+    </ProjectReference>
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
