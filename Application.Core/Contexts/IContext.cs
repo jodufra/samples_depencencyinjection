@@ -9,6 +9,7 @@ namespace Application.Core.Contexts
 {
     public interface IContext : IDisposable
     {
-        IQueryable<T> Query<T>() where T : IEntity ;
+        DataSet<T> Get<T>() where T : IEntity;
+        IQueryable<T> Query<T>() where T : IEntity;
     }
 }

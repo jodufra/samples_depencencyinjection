@@ -1,4 +1,5 @@
-﻿using Application.Core.Contexts;
+﻿using Application.Core;
+using Application.Core.Contexts;
 using Application.Data.Entities;
 using System;
 using System.Collections;
@@ -10,14 +11,35 @@ namespace Application.Data.Contexts
 {
     public class DbContext : BaseContext
     {
-        public IList<User> Users = new List<User>();
-        public IList<Todo> Todos = new List<Todo>();
+        public DataSet<Todo> Todos = new DataSet<Todo>();
+        public DataSet<User> Users = new DataSet<User>();
 
         public DbContext()
         {
-            Register(typeof(User), Users.AsQueryable());
-            Register(typeof(Todo), Todos.AsQueryable());
             Seed();
+        }
+
+        static Todo GenerateTodo(int id)
+        {
+            var isDone = id % 2 == 0;
+            var todo = new Todo
+            {
+                Id = id + 1,
+                Description = $"Todo num. {id + 1}",
+                IsDone = isDone,
+                DateDone = isDone ? DateTime.Now : (DateTime?)null
+            };
+            return todo;
+        }
+
+        static User GenerateUser(int id)
+        {
+            var user = new User
+            {
+                Id = id + 1,
+                Name = $"User num. {id + 1}"
+            };
+            return user;
         }
 
         void Seed()
@@ -27,31 +49,16 @@ namespace Application.Data.Contexts
 
             for (int u = 0; u < usersCount; u++)
             {
-                var user = new User
-                {
-                    Id = u + 1,
-                    Name = $"User num. {u + 1}",
-                    DateCreated = DateTime.Now
-                };
+                var user = GenerateUser(u);
                 Users.Add(user);
 
                 for (int t = 0; t < todosCount; t++)
                 {
-                    var isDone = t % 2 == 0;
-                    var todo = new Todo
-                    {
-                        Id = u + 1,
-                        IdUser = user.Id,
-                        Description = $"Todo num. {t + 1}",
-                        DateCreated = DateTime.Now,
-                        IsDone = isDone,
-                        DateDone = isDone ? DateTime.Now : (DateTime?)null,
-                        DateUpdated = isDone ? DateTime.Now : (DateTime?)null
-                    };
+                    var todo = GenerateTodo(t);
+                    todo.IdUser = user.Id;
                     Todos.Add(todo);
                 }
             }
         }
-
     }
 }
