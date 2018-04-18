@@ -7,17 +7,21 @@ using System.Threading.Tasks;
 
 namespace Application.Core
 {
-    public interface IDataSet
-    {
-        Type GetDataType();
-        event EventHandler Added;
-    }
-
     public class DataSet<T> : List<T>, IDataSet where T : IEntity
     {
         readonly Type _dataType;
 
         public DataSet()
+        {
+            _dataType = typeof(T);
+        }
+
+        public DataSet(int capacity) : base(capacity)
+        {
+            _dataType = typeof(T);
+        }
+
+        public DataSet(IEnumerable<T> collection) : base(collection)
         {
             _dataType = typeof(T);
         }
@@ -30,6 +34,6 @@ namespace Application.Core
             base.Add(item);
         }
 
-        public Type GetDataType() => _dataType;
+        public Type DataType => _dataType;
     }
 }

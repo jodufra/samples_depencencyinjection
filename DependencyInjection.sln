@@ -11,11 +11,11 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Application.Data", "Applica
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Tests", "Tests", "{4169777E-39A0-4041-919C-19F093E7A142}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Application.Tests", "Application.Tests\Application.Tests.csproj", "{A71F99A2-65F3-43A9-BCC6-2DF9DCB26DF5}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Tests.Application", "Application.Tests\Tests.Application.csproj", "{A71F99A2-65F3-43A9-BCC6-2DF9DCB26DF5}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Application.Core.Tests", "Application.Core.Tests\Application.Core.Tests.csproj", "{A5706337-75E6-4D5D-A92F-00AE1B1379B9}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Tests.Application.Core", "Application.Core.Tests\Tests.Application.Core.csproj", "{A5706337-75E6-4D5D-A92F-00AE1B1379B9}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Application.Data.Tests", "Application.Data.Tests\Application.Data.Tests.csproj", "{9BF8D43B-F59A-48D8-9231-8E65B14618EE}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Tests.Application.Data", "Application.Data.Tests\Tests.Application.Data.csproj", "{9BF8D43B-F59A-48D8-9231-8E65B14618EE}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

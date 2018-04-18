@@ -34,7 +34,7 @@ namespace Application.Configuration
 
         static void RegisterDependencies(Container container)
         {
-            container.Register<IContext>(() => DbContextFactory.Instance.GetPerRequest(), Lifestyle.Scoped);
+            container.Register<IContext>(() => DbContextFactory.Instance.Value.GetPerRequest(), Lifestyle.Scoped);
 
             container.Register<IUserRepository, UserRepository>();
             container.Register<ITodoRepository, TodoRepository>();

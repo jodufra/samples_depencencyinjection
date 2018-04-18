@@ -12,13 +12,28 @@ namespace Application.Core.Contexts
         Dictionary<Type, FieldInfo> DataTypes;
         Dictionary<Type, object> DataSets;
         bool IsDisposed;
-        bool IsInitialized;
 
         protected BaseContext()
         {
             IsDisposed = false;
-            IsInitialized = false;
-            RegisterDataTypes();
+
+            DataTypes = new Dictionary<Type, FieldInfo>();
+            DataSets = new Dictionary<Type, object>();
+
+            var dataSetType = typeof(IDataSet);
+
+            var type = GetType();
+            var fields = type.GetFields();
+
+            foreach (var fieldInfo in fields)
+            {
+                var dbSet = (IDataSet)fieldInfo.GetValue(this);
+                var dbSetType = dbSet.DataType;
+
+                DataTypes.Add(dbSetType, fieldInfo);
+
+                dbSet.Added += OnAdd;
+            }
         }
 
         public void Dispose()
@@ -49,9 +64,7 @@ namespace Application.Core.Contexts
                 return;
 
             if (disposing)
-            {
                 DataTypes.Clear();
-            }
 
             IsDisposed = true;
         }
@@ -63,36 +76,11 @@ namespace Application.Core.Contexts
             if (!DataTypes.ContainsKey(dataSetType))
                 throw new ArgumentOutOfRangeException(dataSetType.ToString());
 
-            if (DataSets != null && !DataSets.ContainsKey(dataSetType))
+            if (!DataSets.ContainsKey(dataSetType))
                 DataSets.Add(dataSetType, (DataSet<T>)DataTypes[dataSetType].GetValue(this));
             
             return (DataSet<T>)DataSets[dataSetType];
         }
 
-        void RegisterDataTypes()
-        {
-            if (IsInitialized)
-                return;
-
-            IsInitialized = true;
-
-            DataTypes = new Dictionary<Type, FieldInfo>();
-            DataSets = new Dictionary<Type, object>();
-
-            var dataSetType = typeof(IDataSet);
-
-            var type = GetType();
-            var fields = type.GetFields();
-
-            foreach (var fieldInfo in fields)
-            {
-                var dbSet = (IDataSet)fieldInfo.GetValue(this);
-                var dbSetType = dbSet.GetDataType();
-
-                DataTypes.Add(dbSetType, fieldInfo);
-
-                dbSet.Added += OnAdd;
-            }
-        }
     }
 }

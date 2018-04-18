@@ -10,5 +10,6 @@ namespace Application.Core.Entities
         int Id { get; set; }
         DateTime DateCreated { get; set; }
         DateTime? DateUpdated { get; set; }
+        bool IsNew { get; }
     }
 }

@@ -10,7 +10,12 @@ namespace Application.Data.Factories
 {
     public class DbContextFactory : BaseFactory<DbContext>
     {
-        public static DbContextFactory Instance = new DbContextFactory();
+        public static Lazy<DbContextFactory> Instance = new Lazy<DbContextFactory>(InitInstance);
+
+        static DbContextFactory InitInstance()
+        {
+            return new DbContextFactory();
+        }
 
         public DbContextFactory() : base(nameof(DbContext))
         {
@@ -18,11 +23,6 @@ namespace Application.Data.Factories
 
         public DbContextFactory(string key) : base(key)
         {
-        }
-
-        public override DbContext Build()
-        {
-            return new DbContext();
         }
     }
 }

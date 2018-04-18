@@ -1,10 +1,11 @@
 ﻿using System;
+using System.Collections;
 using System.Threading;
 using System.Web;
 
 namespace Application.Core.Factories
 {
-    public abstract class BaseFactory<T> : IFactory<T> where T : class, IDisposable
+    public abstract class BaseFactory<T> : IFactory<T> where T : class, IDisposable, new()
     {
         string Key;
         bool IsDisposed;
@@ -17,21 +18,28 @@ namespace Application.Core.Factories
 
         public T GetPerRequest()
         {
-            var httpContext = HttpContext.Current;
-            if (httpContext == null)
-                return Build();
-
-            var context = (T)httpContext.Items[Key];
-            if (context == null)
-            {
-                context = Build();
-                httpContext.Items[Key] = context;
-            }
-
-            return context;
+            return GetPerRequest(GetContextDictionary());
         }
 
-        public abstract T Build();
+        public T GetPerRequest(IDictionary dictionary)
+        {
+            if (dictionary == null)
+                return Build();
+
+            var value = (T)dictionary[Key];
+            if (value == null)
+            {
+                value = Build();
+                dictionary[Key] = value;
+            }
+
+            return value;
+        }
+
+        public virtual T Build()
+        {
+            return new T();
+        }
 
         public void Dispose()
         {
@@ -45,10 +53,24 @@ namespace Application.Core.Factories
                 return;
 
             if (disposing)
-                GetPerRequest().Dispose();
+            {
+                var dictionary = GetContextDictionary();
+                if (dictionary != null)
+                {
+                    var value = (T)dictionary[Key];
+                    if (value != null)
+                    {
+                        value.Dispose();
+                    }
+                }
+            }
 
             IsDisposed = true;
         }
 
+        protected virtual IDictionary GetContextDictionary()
+        {
+            return HttpContext.Current?.Items;
+        }
     }
 }
