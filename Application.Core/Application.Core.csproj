@@ -54,5 +54,11 @@
     <Compile Include="Repositories\BaseRepository.cs" />
     <Compile Include="Repositories\IRepository.cs" />
   </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\zAnonimize\zAnonimize.csproj">
+      <Project>{9c871e6d-2fbe-4543-8a6b-898998812bbe}</Project>
+      <Name>zAnonimize</Name>
+    </ProjectReference>
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

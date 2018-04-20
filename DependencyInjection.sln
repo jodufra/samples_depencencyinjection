@@ -17,6 +17,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Tests.Application.Core", "A
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Tests.Application.Data", "Application.Data.Tests\Tests.Application.Data.csproj", "{9BF8D43B-F59A-48D8-9231-8E65B14618EE}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "zAnonimize", "zAnonimize\zAnonimize.csproj", "{9C871E6D-2FBE-4543-8A6B-898998812BBE}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -47,6 +49,10 @@ Global
 		{9BF8D43B-F59A-48D8-9231-8E65B14618EE}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{9BF8D43B-F59A-48D8-9231-8E65B14618EE}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{9BF8D43B-F59A-48D8-9231-8E65B14618EE}.Release|Any CPU.Build.0 = Release|Any CPU
+		{9C871E6D-2FBE-4543-8A6B-898998812BBE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9C871E6D-2FBE-4543-8A6B-898998812BBE}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{9C871E6D-2FBE-4543-8A6B-898998812BBE}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{9C871E6D-2FBE-4543-8A6B-898998812BBE}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
