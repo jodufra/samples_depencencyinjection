@@ -7,11 +7,11 @@ using System.Threading.Tasks;
 
 namespace zAnonimize
 {
-    public static class Anonimize
+    public static class CryptoService
     {
-        static readonly string TRIPLE_DES_KEY = "App:Anonimize:Key";
+        public static string TRIPLE_DES_KEY = "App:Anonimize:Key";
 
-        static readonly byte[] TRIPLE_DES_IV = { 125, 6, 87, 63, 172, 2, 173, 69 };
+        public static byte[] TRIPLE_DES_IV = { 125, 6, 87, 63, 172, 2, 173, 69 };
 
         /// <summary>Decrypts the provided input using MD5 and TripleDES CryptoServices</summary>
         /// <param name="input">The input string to be decrypted</param>

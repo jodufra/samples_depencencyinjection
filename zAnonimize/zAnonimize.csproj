@@ -32,8 +32,8 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="Cauldron.Interception, Version=2.0.0.39, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\Cauldron.Interception.Fody.2.1.0\lib\net461\Cauldron.Interception.dll</HintPath>
+    <Reference Include="PropertyChanged, Version=2.5.4.0, Culture=neutral, PublicKeyToken=ee3ee20bcf148ddd, processorArchitecture=MSIL">
+      <HintPath>..\packages\PropertyChanged.Fody.2.5.4\lib\net452\PropertyChanged.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
@@ -45,9 +45,9 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Anonimize.cs" />
-    <Compile Include="AnonimizePropertyAttribute.cs" />
-    <Compile Include="AnonimizeAttribute.cs" />
+    <Compile Include="AnonimizeService.cs" />
+    <Compile Include="CryptoService.cs" />
+    <Compile Include="AnonimizePropertiesAttribute.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

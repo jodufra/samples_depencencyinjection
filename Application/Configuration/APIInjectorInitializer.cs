@@ -6,8 +6,8 @@ namespace Application.Configuration
     using SimpleInjector;
     using System.Web.Http;
     using Application.Core.Contexts;
-    using Application.Data.Factories;
-    using Application.Data.Repositories;
+    using Application.Core.Factories;
+    using Application.Core.Repositories;
 
     public static class APIInjectorInitializer
     {

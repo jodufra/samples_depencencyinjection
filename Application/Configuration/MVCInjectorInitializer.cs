@@ -9,8 +9,8 @@ namespace Application.Configuration
     using SimpleInjector.Integration.Web.Mvc;
     using SimpleInjector.Integration.Web;
     using Application.Core.Contexts;
-    using Application.Data.Factories;
-    using Application.Data.Repositories;
+    using Application.Core.Factories;
+    using Application.Core.Repositories;
 
     public static class MVCInjectorInitializer
     {
