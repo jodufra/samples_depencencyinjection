@@ -10,13 +10,8 @@ namespace Application.Core.Factories
 {
     public class DbContextFactory : BaseFactory<DbContext>
     {
-        public static Lazy<DbContextFactory> Instance = new Lazy<DbContextFactory>(InitInstance);
-
-        static DbContextFactory InitInstance()
-        {
-            return new DbContextFactory();
-        }
-
+        public static Lazy<DbContextFactory> Instance = new Lazy<DbContextFactory>(() => new DbContextFactory());
+        
         public DbContextFactory() : base(nameof(DbContext))
         {
         }
