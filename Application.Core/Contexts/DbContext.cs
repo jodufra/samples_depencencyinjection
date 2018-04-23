@@ -37,7 +37,7 @@ namespace Application.Core.Contexts
             var user = new User
             {
                 Id = id + 1,
-                Name = $"User num. {id + 1}"
+                FullName = $"User num. {id + 1}"
             };
             return user;
         }
